@@ -32,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
+    print('Height: $height, Width: $width');
     return BlocListener(
         bloc: _homeBloc,
         listener: (context, state) {
@@ -49,32 +50,24 @@ class _HomeScreenState extends State<HomeScreen> {
             elevation: 0.0,
           ),
           body: Padding(
-            padding: EdgeInsets.fromLTRB(width*0.05, 0.0, width*0.05, 0),
+            padding: EdgeInsets.fromLTRB(20.0, 0.0, 20.0, 0),
             child: Container(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  SizedBox(
-                    height: height*0.079,
-                    width: width,
-                    child: AutoSizeText(
-                      '$name 님\n오늘도 풍성한 하루 되세요',
-                      style: homeMainTitle,
-                      maxLines: 3,
-                    )
+                  Text(
+                    '$name 님\n오늘도 풍성한 하루 되세요',
+                    style: homeMainTitle,
+                    maxLines: 3,
                   ),
                   SizedBox(
-                    height: height * 0.009,
+                    height: 8.0,
                   ),
-                  SizedBox(
-                    height: height*0.03,
-                    child: FittedBox(
-                      fit: BoxFit.fitHeight,
-                      child: Text(
-                        '$year년 $month월 $day일 $weekday',
-//                style: Theme.of(context).textTheme.headline2,
-                        style: homeSubTitle,
-                      ),
+                  FittedBox(
+                    fit: BoxFit.fitHeight,
+                    child: Text(
+                      '$year년 $month월 $day일 $weekday',
+                      style: homeSubTitle,
                     ),
                   ),
                   SizedBox(

@@ -51,6 +51,7 @@ class _AppState extends State<App> {
                 primaryColor: Colors.black,
                 primaryColorLight: Colors.white,
                 accentColor: Colors.blue[600],
+                appBarTheme: AppBarTheme(brightness: Brightness.light),
               ),
               home: BlocBuilder<AuthenticationBloc, AuthenticationState>(
                 // ignore: missing_return

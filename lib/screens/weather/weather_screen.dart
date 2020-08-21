@@ -177,7 +177,6 @@ class _WeatherScreenState extends State<WeatherScreen> {
                             children: [
                               SizedBox(
                                 height: height * 0.028,
-                                width: width * 0.058,
                                 child: FittedBox(
                                   fit: BoxFit.fitHeight,
                                   child: (int.parse(state.skyList[index].fcstValue) <= 1)

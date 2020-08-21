@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:nongple/utils/colors.dart';
 
 // home page style
-TextStyle homeMainTitle = TextStyle(fontSize: 100, fontWeight: FontWeight.bold, color: Colors.black);
-TextStyle homeSubTitle = TextStyle(fontSize: 16, color: Color(0xFF828282));
+TextStyle homeMainTitle = TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Colors.black);
+TextStyle homeSubTitle = TextStyle(fontSize: 20, color: Color(0xFF828282));
 
 
 

@@ -11,6 +11,7 @@ class FacilityCreateScreen extends StatefulWidget {
 }
 
 class _FacilityCreateScreenState extends State<FacilityCreateScreen> {
+  final focusNode = FocusNode();
   TextEditingController facilityNameController = TextEditingController();
   AddFacilityBloc _addFacilityBloc;
   double height;
@@ -84,13 +85,13 @@ class _FacilityCreateScreenState extends State<FacilityCreateScreen> {
                 ),
               ),
             ),
-            TextFormField(
+            TextField(
               style: TextStyle(fontWeight: FontWeight.bold),
               controller: facilityNameController,
-              maxLines: null,
               decoration: InputDecoration(
                 hintText: '이름 입력하기',
               ),
+              focusNode: focusNode,
             )
           ],
         ),

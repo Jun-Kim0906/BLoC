@@ -22,10 +22,4 @@ class Dictionary {
   String getNumber() {
     return wordNumber;
   }
-//  Map<String, dynamic> toMap() {
-//    return {
-//      'wordNm': wordName,
-//      'wordNo' : wordNumber,
-//    };
-//  }
 }

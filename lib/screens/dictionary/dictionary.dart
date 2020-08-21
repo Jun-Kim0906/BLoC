@@ -11,8 +11,10 @@ class DictionaryScreen extends StatefulWidget {
 }
 
 class _DictionaryScreenState extends State<DictionaryScreen> {
+  final focusNode = FocusNode();
   DictionaryBloc _dictionaryBloc;
   bool searched = false;
+  FocusScopeNode currentFocus;
 
   @override
   void initState() {
@@ -25,29 +27,38 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
     return BlocBuilder(
         bloc: _dictionaryBloc,
         builder: (context, DictionaryState state) {
-          return Column(
-            children: <Widget>[
-              searchBar(),
-              state.searching
-                  ? Expanded(
-                      child: Center(
-                          child: CircularProgressIndicator(
-                        valueColor: AlwaysStoppedAnimation<Color>(
-                            Color.fromARGB(255, 0, 61, 165)),
-                      )),
-                    )
-                  : searched==false
-                      ? Container()
-                      : state.searchedItems.length == 0
-                          ? Expanded(
-                              child: Center(
-                                child: Image.asset('assets/no_result.png'),
+          return GestureDetector(
+            onTap: (){
+              currentFocus = FocusScope.of(context);
+
+              if (!currentFocus.hasPrimaryFocus) {
+                currentFocus.unfocus();
+              }
+            },
+            child: Column(
+              children: <Widget>[
+                searchBar(),
+                state.searching
+                    ? Expanded(
+                        child: Center(
+                            child: CircularProgressIndicator(
+                          valueColor: AlwaysStoppedAnimation<Color>(
+                              Color.fromARGB(255, 0, 61, 165)),
+                        )),
+                      )
+                    : searched==false
+                        ? Container()
+                        : state.searchedItems.length == 0
+                            ? Expanded(
+                                child: Center(
+                                  child: Image.asset('assets/no_result.png'),
+                                ),
+                              )
+                            : Expanded(
+                                child: _matchedList(context, state),
                               ),
-                            )
-                          : Expanded(
-                              child: _matchedList(context, state),
-                            ),
-            ],
+              ],
+            ),
           );
         });
   }
@@ -77,7 +88,7 @@ class _DictionaryScreenState extends State<DictionaryScreen> {
             child: Container(
               padding: EdgeInsets.only(right: 20),
               child: TextField(
-                autofocus: true,
+//                focusNode: currentFocus,
                 style: TextStyle(fontSize: 20),
                 decoration: InputDecoration(
                   focusedBorder: UnderlineInputBorder(
